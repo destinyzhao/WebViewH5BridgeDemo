@@ -46,7 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadWKWebViewBridge];
+    [self loadWebViewBridge];
 }
 
 - (void)viewDidLoad {
@@ -82,7 +82,7 @@
     
     // JavaScript调用Objective-C
     // OC注册一个方法：
-    [self.bridge registerHandler:@"getBlogNameFromObjC" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.bridge registerHandler:@"getProductDetail" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"testObjcCallback called: %@", data);
         // responseCallback 给JS回复
         responseCallback(@"Response from testObjcCallback");
@@ -117,7 +117,7 @@
     [_wkbridge setWebViewDelegate:self];
     
     // JavaScript调用Objective-C
-    [self.wkbridge registerHandler:@"getBlogNameFromObjC" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.wkbridge registerHandler:@"getProductDetail" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"testObjcCallback called: %@", data);
         // responseCallback 给JS回复
         responseCallback(@"Response from testObjcCallback");
